@@ -2585,7 +2585,9 @@ function (_React$Component) {
       var disable = this.state.disable;
       var isScroll = options.isScroll;
       var delayHide = isScroll ? 0 : this.state.delayHide;
-      var afterHide = this.props.afterHide;
+      var _this$props6 = this.props,
+          afterHide = _this$props6.afterHide,
+          hideImmediately = _this$props6.hideImmediately;
       var placeholder = this.getTooltipContent();
       if (!this.mount) return;
       if (this.isEmptyTip(placeholder) || disable) return; // if the tooltip is empty, disable the tooltip
@@ -2602,7 +2604,7 @@ function (_React$Component) {
       var resetState = function resetState() {
         var isVisible = _this6.state.show; // Check if the mouse is actually over the tooltip, if so don't hide the tooltip
 
-        if (_this6.mouseOnToolTip()) {
+        if (!hideImmediately && _this6.mouseOnToolTip()) {
           _this6.listenForTooltipExit();
 
           return;
@@ -2848,12 +2850,14 @@ function (_React$Component) {
   bodyMode: propTypes.bool,
   possibleCustomEvents: propTypes.string,
   possibleCustomEventsOff: propTypes.string,
-  clickable: propTypes.bool
+  clickable: propTypes.bool,
+  hideImmediately: propTypes.bool
 }), _defineProperty(_class2, "defaultProps", {
   insecure: true,
   resizeHide: true,
   wrapper: "div",
-  clickable: false
+  clickable: false,
+  ideImmediately: false
 }), _defineProperty(_class2, "supportedWrappers", ["div", "span"]), _defineProperty(_class2, "displayName", "ReactTooltip"), _temp)) || _class) || _class) || _class) || _class) || _class) || _class) || _class;
 
 module.exports = ReactTooltip;
